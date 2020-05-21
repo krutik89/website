@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} blog {% endblock title %}
+{% block body %}
+<div class="container my-4">
+        <h2><strong>Blogs by NetBook</strong></h2>
+        {% for post in allPosts %}
+       <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{post.author}}<span>({{post.views}} views)</span></strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="card" style="width: 18rem;">
+            <img src='/media/{{post.image}}' class="card-img-top" alt="...">
+
+          <div class="mb-1 text-muted">{{post.datetime}}</div>
+            <div class="col-auto d-none d-lg-block">
+
+        </div>
+          </div>
+          <p class="card-text mb-auto">{{post.content| truncatechars:10}}</p>
+          <div>
+           <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary" href="/blog/blogPost">Continue reading</a>
+          </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock body %}
